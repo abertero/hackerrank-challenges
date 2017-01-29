@@ -2,8 +2,7 @@ package com.thirtydaysofcodding;
 
 import org.apache.commons.lang.StringUtils;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Given a string, , we define some operations on the string as follows:
@@ -51,17 +50,51 @@ import java.util.Set;
 public class ReverseShuffleMerge {
 
     public static void main(String[] args) {
-        String smallest = lexicographicallySmallest("eggegg");
-        System.out.println(smallest);
-        System.out.println(shuffleSet(smallest));
-        smallest = lexicographicallySmallest("asfdsadf");
-        System.out.println(smallest);
-        System.out.println(shuffleSet(smallest));
+        /*
+        Scanner scanner = new Scanner(System.in);
+        String element = scanner.nextLine();
+        System.out.println(lexicographicallySmallest(element));
+        */
+        String element = "bdabaceadaedaaaeaecdeadababdbeaeeacacaba";
+        String expectedResult = "aaaaaabaaceededecbdb";
+        System.out.println(expectedResult.length());
+        System.out.println(expectedResult.equals(lexicographicallySmallest(element)));
+        System.out.println(lexicographicallySmallest(element));
+        System.out.println(findSmallestGroup(element));
+        System.out.println(findSmallestGroup(element).length());
+        System.out.println(shuffleSet(findSmallestGroup(element)));
+        System.out.println(shuffleSet(findSmallestGroup(element)).contains(expectedResult));
+        System.out.println(lexographicallyOrderSet(shuffleSet(findSmallestGroup(element))));
     }
 
-    private static String lexicographicallySmallest(String element) {
+    public static String lexicographicallySmallest(String element) {
         String smallestGroup = findSmallestGroup(element);
-        return smallestGroup;
+        List<String> setOfShuffle = lexographicallyOrderSet(shuffleSet(smallestGroup));
+        for (String shuffleOfSmallestGroup : setOfShuffle) {
+            if (containsGroup(element, reverse(shuffleOfSmallestGroup))) {
+                return shuffleOfSmallestGroup;
+            }
+        }
+        return "";
+    }
+
+    public static List<String> lexographicallyOrderSet(Set<String> elements) {
+        List<String> list = new ArrayList<>(elements);
+        Collections.sort(list);
+        return list;
+    }
+
+    public static boolean containsGroup(String element, String group) {
+        String aux = element;
+        for (int i = 0; i < group.length(); i++) {
+            String character = String.valueOf(group.charAt(i));
+            if (aux.contains(character)) {
+                aux = aux.substring(aux.indexOf(character) + 1);
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static String findSmallestGroup(String element) {
@@ -82,6 +115,12 @@ public class ReverseShuffleMerge {
     }
 
     public static Set<String> shuffleSet(String element) {
+        Set<String> results = doShuffleSet(element);
+        results.addAll(doShuffleSet(reverse(element)));
+        return results;
+    }
+
+    public static Set<String> doShuffleSet(String element) {
         Set<String> elements = new HashSet<>();
         for (int i = 0; i < element.length(); i++) {
             String characterStr = String.valueOf(element.charAt(i));
@@ -94,6 +133,13 @@ public class ReverseShuffleMerge {
             }
         }
         return elements;
+    }
+
+    public static String reverse(String element) {
+        if (element == null) {
+            return null;
+        }
+        return new StringBuffer(element).reverse().toString();
     }
 
     public static int numberOfElements(String input, char element) {
