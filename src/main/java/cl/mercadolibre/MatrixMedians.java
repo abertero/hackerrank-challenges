@@ -33,6 +33,7 @@ public class MatrixMedians {
             int median = calculateMedian(matrix, queries[j][0] - 1, queries[j][2] - 1, queries[j][1] - 1, queries[j][3] - 1);
             System.out.println(median);
         }
+        scanner.close();
     }
 
     public static int calculateMedian(int[][] matrix, int xMin, int xMax, int yMin, int yMax) {
