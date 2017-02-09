@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by aldo on 29-01-17.
  */
-public class DayOneDataTypes {
+public class Day01DataTypes {
 
     public static void main(String[] args) {
         int i = 4;

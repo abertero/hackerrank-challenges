@@ -1,6 +1,4 @@
-package com.thirtydaysofcodding;
-
-import org.apache.commons.lang.StringUtils;
+package com.algorithms.random;
 
 import java.util.*;
 
