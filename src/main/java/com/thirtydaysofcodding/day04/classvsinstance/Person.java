@@ -1,4 +1,4 @@
-package com.algorithms.classvsinstance;
+package com.thirtydaysofcodding.day04.classvsinstance;
 
 import java.util.Scanner;
 
