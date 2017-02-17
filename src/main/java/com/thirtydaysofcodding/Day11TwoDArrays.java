@@ -2,7 +2,7 @@ package com.thirtydaysofcodding;
 
 import java.util.Scanner;
 
-public class Day112DArrays {
+public class Day11TwoDArrays {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int arr[][] = new int[6][6];
