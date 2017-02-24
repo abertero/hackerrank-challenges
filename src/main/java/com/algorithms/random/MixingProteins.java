@@ -53,6 +53,7 @@ import java.util.Scanner;
  * AADDA
  * ADADA
  * DDDDA
+ * TODO: Incomplete
  */
 public class MixingProteins {
     public static final char CHR_A = 'A';
