@@ -44,6 +44,7 @@ public class Day25RunningTimeAndComplexity {
             int number = scn.nextInt();
             System.out.println(determineIfPrime(number));
         }
+        scn.close();
     }
 
     public static String determineIfPrime(int number) {
