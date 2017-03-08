@@ -1,4 +1,4 @@
-package com.algorithms;
+package com.algorithms.random;
 
 import java.util.Scanner;
 
